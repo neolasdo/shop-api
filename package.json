@@ -1,0 +1,22 @@
+{
+  "name": "demonodejs",
+  "description": "Example Node.js API application.",
+  "author": "Tuan Nguyen <tuannd995@gmail.com>",
+  "dependencies": {
+    "express": "^4.16.3",
+    "hippie": "0.3.x",
+    "jjg-ping": "1.x.x",
+    "mocha": "2.2.x",
+    "mongoose": "^5.0.15",
+    "restify": "3.x.x"
+  },
+  "scripts": {
+    "start": "npm start",
+    "test": "mocha test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com:geerlingguy/demo-nodejs-api.git"
+  },
+  "engine": "node >= 0.10.6"
+}

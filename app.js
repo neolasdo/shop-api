@@ -5,16 +5,19 @@ var config = require('./config/config');
 var createError = require('http-errors');
 var path = require('path');
 var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+var morgan = require('morgan');
+var router = express.Router();
+var bodyParser = require('body-parser');
 
-
+router.use(bodyParser.urlencoded({ extended: true }));
+router.use(bodyParser.json());
 
 // Include all routes here
 var adminRoute = require('./routes/admin.js');
 var appRoute = require('./routes/frontend.js');
-
-app.use('admin/api/', adminRoute);
-app.use('api/', appRoute);
+app.use(morgan('combined'));
+app.use('/admin/api/', adminRoute);
+app.use('/api/', appRoute);
 app.use(function(req, res, next) {
     next(createError(404));
 });

@@ -8,19 +8,21 @@ var cookieParser = require('cookie-parser');
 var morgan = require('morgan');
 var router = express.Router();
 var bodyParser = require('body-parser');
+var cookieParser = require('cookie-parser');
 
 router.use(bodyParser.urlencoded({ extended: true }));
 router.use(bodyParser.json());
 
 // Include all routes here
-var adminRoute = require('./routes/admin.js');
-var appRoute = require('./routes/frontend.js');
+
+var apiRoute = require('./routes/api');
 app.use(morgan('combined'));
-app.use('/admin/api/', adminRoute);
-app.use('/api/', appRoute);
-app.use(function(req, res, next) {
+app.use('/api', apiRoute);
+app.use('*', (req, res, next) => {
     next(createError(404));
 });
+
+
 var port = process.env.PORT || 8080;
 app.listen(port);
 console.log('Express app started on port '+port);

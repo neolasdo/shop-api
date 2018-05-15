@@ -14,7 +14,13 @@ router.use(bodyParser.urlencoded({ extended: true }));
 router.use(bodyParser.json());
 
 // Include all routes here
-
+app.all('*', function(req, res, next) {
+     var origin = req.get('origin'); 
+     res.header('Access-Control-Allow-Origin', origin);
+     res.header("Access-Control-Allow-Headers", "X-Requested-With");
+     res.header('Access-Control-Allow-Headers', 'Content-Type');
+     next();
+});
 var apiRoute = require('./routes/api');
 app.use(morgan('combined'));
 app.use('/api', apiRoute);

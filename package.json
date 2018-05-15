@@ -28,7 +28,7 @@
     "validator": "^10.2.0"
   },
   "scripts": {
-    "start": "npm start",
+    "start": "npm install && nodemon app.js",
     "test": "mocha test"
   },
   "repository": {

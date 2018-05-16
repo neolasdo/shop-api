@@ -10,8 +10,8 @@ var router = express.Router();
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 
-router.use(bodyParser.urlencoded({ extended: true }));
-router.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 // Include all routes here
 app.all('*', function(req, res, next) {

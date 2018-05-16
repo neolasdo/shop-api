@@ -42,7 +42,7 @@ exports.find = (req, res) => {
 		})
 	})
 }
-exports.update = () => {
+exports.update = (req, res) => {
 	let id = req.params.id;
 	let data = req.body.product;
 	Product.findOneAndUpdate({_id: id}, data, (err, result) => {

@@ -11,8 +11,8 @@ Product group routing
 --------------------------------------------**/
 
 router.get('/products', ProductController.getAll);
-router.post('/products', ProductController.create);
-router.route('product/:id')
+router.post('/product', ProductController.create);
+router.route('/product/:id')
 	.get(ProductController.find)
 	.put(ProductController.update)
 	.delete(ProductController.delete);

@@ -10,15 +10,15 @@ var router = express.Router();
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 
-router.use(bodyParser.urlencoded({ extended: true }));
-router.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 // Include all routes here
 app.all('*', function(req, res, next) {
      var origin = req.get('origin'); 
-     res.header('Access-Control-Allow-Origin', origin);
+     res.header("Access-Control-Allow-Origin", origin);
      res.header("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");
-     res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
+     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
      next();
 });
 var apiRoute = require('./routes/api');

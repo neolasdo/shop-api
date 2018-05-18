@@ -59,7 +59,7 @@ exports.update = (req, res) => {
 exports.delete = (req, res) => {
 	let id = req.params.id;
 
-	Product.findOneAndDelete({_id: id}, data, (err) => {
+	Product.findOneAndDelete({_id: id}, (err) => {
 		if (err) return res.status(400).send({
 			'status': 'fail',
 			'error': err

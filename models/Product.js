@@ -5,11 +5,11 @@ var Schema = mongoose.Schema;
 var ProductSchema = new Schema({
 	name: {
 		type: String,
-		required: true
+		required: [true, 'Tên sản phẩm không được để trống']
 	},
 	slug: {
 		type: String,
-		required: true,
+		required: [true, 'Đường dẫn sản phẩm không được để trống'],
 		unique: true
 	},
 	mainImg: {
@@ -22,12 +22,11 @@ var ProductSchema = new Schema({
 	}],
 	price: {
 		type: Number,
-		require: true,
+		required: [true, 'Giá sản phẩm không được để trống'],
 		min: 0
 	},
 	salePrice: {
 		type: Number,
-		require: true,
 		min: 0	
 	},
 	brand: {
@@ -49,7 +48,6 @@ var ProductSchema = new Schema({
 	inStock: {
 		type: Number,
 		min: 0,
-		max: 1000,
 		default: 100
 	},
 	attributes: [{
@@ -78,6 +76,8 @@ var ProductSchema = new Schema({
 		type: String
 	}]
 })
+
+
 ProductSchema.pre('update', (next) => {
 	var update = Date.now();
 

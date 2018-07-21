@@ -5,11 +5,11 @@ var Schema = mongoose.Schema;
 var CategorySchema = new Schema({
 	name: {
 		type: String,
-		required: true
+		required: [true, 'Tên danh mục không được để trống']
 	},
 	slug: {
 		type: String,
-		required: true,
+		required: [true, 'Đường dẫn không được để trống'],
 		unique: true
 	},
 	metaDesc: {
@@ -27,6 +27,7 @@ var CategorySchema = new Schema({
 		default: Date.now()
 	},
 })
+
 CategorySchema.pre('update', (next) => {
 	var update = Date.now();
 

@@ -9,7 +9,8 @@ var CategorySchema = new Schema({
 	},
 	slug: {
 		type: String,
-		required: true
+		required: true,
+		unique: true
 	},
 	metaDesc: {
 		type: String,

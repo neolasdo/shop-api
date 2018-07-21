@@ -9,7 +9,8 @@ var ProductSchema = new Schema({
 	},
 	slug: {
 		type: String,
-		required: true
+		required: true,
+		unique: true
 	},
 	mainImg: {
 		type: mongoose.Schema.ObjectId,

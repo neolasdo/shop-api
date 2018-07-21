@@ -7,6 +7,10 @@ var ProductSchema = new Schema({
 		type: String,
 		required: true
 	},
+	slug: {
+		type: String,
+		required: true
+	},
 	mainImg: {
 		type: mongoose.Schema.ObjectId,
 		ref: "Media"

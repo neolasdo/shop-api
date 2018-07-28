@@ -1,16 +1,28 @@
 var Product = require('../models/Product');
 
 exports.getAll = (req, res) => {
-	Product.find({}).exec((err, data) => {
-		if (err) return res.status(400).send({
-			'status': 'fail',
-			'error': err
-		});
+	var limit = req.query.limit?parseInt(req.query.limit):10;
+	var page = req.query.page?parseInt(req.query.page):1;
+	var keyword = req.query.keyword?req.query.keyword:'';
+	Product.paginate({'name' : new RegExp(keyword, 'i')}, {limit: limit, page: page})
+	.then(data => {
 		return res.json({
 			'status': 'success',
-			'data': data
+			'data': data.docs,
+			'meta': {
+				'limit': data.limit,
+				'page': data.page,
+				'pages': data.pages,
+				'total': data.total
+			}
 		})
 	})
+	.catch((err) => {
+		return res.status(400).send({
+				'status': 'fail',
+				'error': err
+			});	
+	}); 
 }
 exports.create = (req, res) => {
 	let pr = req.body.product;

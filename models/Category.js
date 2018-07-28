@@ -1,4 +1,5 @@
 var mongoose = require('mongoose');
+var mongoosePaginate = require('mongoose-paginate');
 
 var Schema = mongoose.Schema;
 
@@ -34,6 +35,8 @@ CategorySchema.pre('update', (next) => {
 	this.update({updatedAt: update});
 	next();
 });
+CategorySchema.plugin(mongoosePaginate);
+
 
 var Category = mongoose.model('Category', CategorySchema);
 module.exports = Category;

@@ -1,4 +1,6 @@
 var mongoose = require('mongoose');
+var mongoosePaginate = require('mongoose-paginate');
+
 
 var Schema = mongoose.Schema;
 
@@ -84,6 +86,8 @@ ProductSchema.pre('update', (next) => {
 	this.update({updatedAt: update});
 	next();
 });
+ProductSchema.plugin(mongoosePaginate);
+
 
 var Product = mongoose.model('Product', ProductSchema);
 module.exports = Product;
